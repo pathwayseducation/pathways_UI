@@ -1,23 +1,45 @@
 import Head from 'next/head'
+import React from 'react';
+import fetch from 'node-fetch';
 
-export default function Home() {
-  return (
-    <div className="container">
-      <Head>
-        <title>Pathways</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+export default class Home extends React.Component {
+  static async getInitialProps(ctx){
+    const data = {
+      username: 'test123',
+      email: 'test123@gmail.com',
+      password: 'meme',
+      bio: 'test bio',
+      education: 'princeton',
+      classOf: '2021'
+    };
+    const response = await fetch('https://pathwaysserver.herokuapp.com/createUser', {
+      method:'POST',
+      mode:'cors',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    const json = await response.json();
+    return {};
+  }
+  render(){
+    return (
+        <div className="container">
+          <Head>
+            <title>Pathways</title>
+          </Head>
 
-      <main>
-        <h1 className="title">
-          Pathways
-        </h1>
-      </main>
+          <main>
+            <h1 className="title">
+              Pathways
+            </h1>
+          </main>
 
-      <footer>
-      </footer>
+          <footer>
+          </footer>
 
-      <style jsx>{`
+          <style jsx>{`
         main {
           padding: 5rem 0;
           flex: 1;
@@ -63,7 +85,7 @@ export default function Home() {
         }
       `}</style>
 
-      <style jsx global>{`
+          <style jsx global>{`
         html,
         body {
           padding: 0;
@@ -77,6 +99,8 @@ export default function Home() {
           box-sizing: border-box;
         }
       `}</style>
-    </div>
-  )
+        </div>
+    )
+  }
+
 }
