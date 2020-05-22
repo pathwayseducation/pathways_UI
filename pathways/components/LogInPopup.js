@@ -10,6 +10,7 @@ import {
     FormGroup,
     ModalFooter
 } from "shards-react";
+import Link from "next/link";
 
 export default class LogInPopup extends React.Component{
     constructor(props) {
@@ -44,7 +45,7 @@ export default class LogInPopup extends React.Component{
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button>Log in</Button>
+                        <Link href="/profile"><Button>Log in</Button></Link>
                     </ModalFooter>
                 </Modal>
             </>

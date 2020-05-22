@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import {
     Button,
     ButtonGroup,
@@ -48,7 +49,7 @@ export default class LogInPopup extends React.Component{
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button>Sign up</Button>
+                        <Link href="/profile"><Button>Sign up</Button></Link>
                     </ModalFooter>
                 </Modal>
             </>
