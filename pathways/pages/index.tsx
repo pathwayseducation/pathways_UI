@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
 import Link from 'next/link';
 
 export default class Home extends React.Component {
-  static async getInitialProps(ctx){
+  /*static async getInitialProps(ctx){
     const data = {
       username: 'test123',
       email: 'test123@gmail.com',
@@ -24,7 +24,7 @@ export default class Home extends React.Component {
     });
     const json = await response.json();
     return {};
-  }
+  }*/
   render(){
     return (
         <div className="container">

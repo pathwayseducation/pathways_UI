@@ -50,8 +50,9 @@ export default class PathwaysNavbar extends React.Component{
 
     render() {
         return (
-            <Navbar type="dark" theme="primary" expand="md">
-                <NavbarBrand href="#">Shards React</NavbarBrand>
+            <>
+            <Navbar type="dark" theme="" expand="md" className="comfortaa orangebg">
+                <NavbarBrand href="#" className="comfortaa">Pathways</NavbarBrand>
                 <NavbarToggler onClick={this.toggleNavbar}/>
 
                 <Collapse open={this.state.collapseOpen} navbar>
@@ -62,7 +63,7 @@ export default class PathwaysNavbar extends React.Component{
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="#" disabled>
+                            <NavLink href="#">
                                 Disabled
                             </NavLink>
                         </NavItem>
@@ -88,11 +89,21 @@ export default class PathwaysNavbar extends React.Component{
 
                                 </InputGroupText>
                             </InputGroupAddon>
-                            <FormInput className="border-0" placeholder="Search..."/>
+                            <FormInput className="border-0" placeholder="Search Pathways..."/>
                         </InputGroup>
                     </Nav>
                 </Collapse>
             </Navbar>
+                <style jsx global>{`
+                    @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+                    .custom{
+                        font-family:Comfortaa;
+                    }
+                    .custom{
+                        background-color: darkorange;
+                    } 
+                `}</style>
+            </>
         );
     }
 }
