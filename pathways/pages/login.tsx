@@ -1,44 +1,33 @@
 import Head from 'next/head'
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import { Button, ButtonGroup, Modal, ModalBody, ModalHeader } from 'shards-react';
 import fetch from 'node-fetch';
 import Link from 'next/link';
+import LogInPopup from '../components/LogInPopup';
+import SignUpPopup from '../components/SignUpPopup';
 
-export default class Home extends React.Component {
-  static async getInitialProps(ctx){
-    const data = {
-      username: 'test123',
-      email: 'test123@gmail.com',
-      password: 'meme',
-      bio: 'test bio',
-      education: 'princeton',
-      classOf: '2021'
-    };
-    const response = await fetch('https://pathwaysserver.herokuapp.com/createUser', {
-      method:'POST',
-      mode:'cors',
-      headers:{
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
-    const json = await response.json();
-    return {};
-  }
+export default class Login extends React.Component {
   render(){
     return (
         <div className="container">
           <Head>
-            <title>Pathways</title>
+            <title>Log-in screen</title>
           </Head>
 
           <main>
             <h1 className="title">
-              Pathways
+              Welcome to Pathways!
             </h1><br></br>
-            <Link href="/login"><Button variant="contained" color="primary">
-              Go to Login
-            </Button></Link>
+            <h2>
+                Enter below.
+            </h2><br></br>
+            <Link href="/"><Button>
+                Home
+            </Button></Link><br></br>
+            <ButtonGroup>
+                <LogInPopup/>
+                <SignUpPopup/>
+            </ButtonGroup>
           </main>
 
           <footer>
