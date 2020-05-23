@@ -9,7 +9,8 @@ import {
     Form,
     FormInput,
     FormGroup,
-    ModalFooter
+    ModalFooter,
+    FormTextarea
 } from "shards-react";
 
 export default class LogInPopup extends React.Component{
@@ -36,20 +37,33 @@ export default class LogInPopup extends React.Component{
                         <Form>
                             <FormGroup>
                                 <label htmlFor="#email">Email Address</label>
-                                <FormInput type="email" id="#email" placeholder="Email Address" />
+                                <FormInput type="email" id="#email" placeholder="What is your email address?" />
                             </FormGroup>
                             <FormGroup>
                                 <label htmlFor="#username">Username</label>
-                                <FormInput id="#username" placeholder="Username" />
+                                <FormInput id="#username" placeholder="Choose a username" />
                             </FormGroup>
                             <FormGroup>
                                 <label htmlFor="#password">Password</label>
-                                <FormInput type="password" id="#password" placeholder="Password" />
+                                <FormInput type="password" id="#password" placeholder="Choose a password" />
+                            </FormGroup>
+                            <FormGroup>
+                                <label htmlFor="#education">Education / School</label>
+                                <FormInput id="#education" placeholder="What school do you attend?" />
+                            </FormGroup>
+                            <FormGroup>
+                                <label htmlFor="#classof">Class Of</label>
+                                <FormInput type="number" id="#classof" placeholder="When do you graduate?" />
+                            </FormGroup>
+                            <FormGroup>
+                                <label htmlFor="#bio">Bio</label>
+                                <FormTextarea id="#bio" placeholder="Write a short bio." />
                             </FormGroup>
                         </Form>
                     </ModalBody>
                     <ModalFooter>
                         <Link href="/profile"><Button>Sign up</Button></Link>
+                        <Button onClick={this.handleSubmit}>Log in</Button>
                     </ModalFooter>
                 </Modal>
             </>
