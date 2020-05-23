@@ -62,8 +62,7 @@ export default class LogInPopup extends React.Component{
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Link href="/profile"><Button>Sign up</Button></Link>
-                        <Button onClick={this.handleSubmit}>Log in</Button>
+                        <Button onClick={this.handleSubmit}>Sign up</Button>
                     </ModalFooter>
                 </Modal>
             </>
