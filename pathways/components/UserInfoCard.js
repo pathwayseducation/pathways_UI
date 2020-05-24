@@ -1,7 +1,11 @@
 import React from "react";
 import {ButtonGroup, Button, Card, CardBody, CardFooter, CardHeader, CardSubtitle, CardTitle, Col, Row} from "shards-react";
 
-export default class UserInfoCard extends React.Component{
+export default class UserInfoCard extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <>
@@ -9,19 +13,22 @@ export default class UserInfoCard extends React.Component{
                     <CardHeader className="border-bottom headerbg">
                         <Row>
                             <Col md="8">
-                                <CardTitle className="comfortaa">Samarjit Kaushik</CardTitle>
-                                <CardSubtitle  className="comfortaa">Tesla STEM High School</CardSubtitle>
+                                <CardTitle className="comfortaa">@{this.props.username}</CardTitle>
+                                <CardSubtitle  className="comfortaa">{this.props.education}</CardSubtitle>
                             </Col>
+                            
+                            {/*
                             <Col md="4">
                                 <img className="rounded-circle" alt="profile picture"></img>
                             </Col>
+                            */}
                         </Row>
 
                     </CardHeader>
                     <CardBody>
-                        <CardSubtitle className="comfortaa">Class of 2021</CardSubtitle>
+                        <CardSubtitle className="comfortaa">{this.props.classOf}</CardSubtitle>
                         <p className="px-2">
-                            Hi! I'm Samarjit, a student at Tesla STEM High School in Redmond, WA, some of my interests include computer science, medical research, and entrepreneurship.
+                            {this.props.bio}
                         </p>
                     </CardBody>
                     <CardFooter className="p-0 m-0 footerbg">

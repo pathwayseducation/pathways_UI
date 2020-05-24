@@ -9,8 +9,44 @@ import SocialInfoCard from '../components/SocialInfoCard';
 import UserExperiencesCard from '../components/UserExperiencesCard';
 import UserActivityCard from '../components/UserActivityCard';
 
+export default class Profile extends React.Component<{}, {bio: string, username: string, email: string, education: string, classOf: number, friendIds: [string], postIds: [string], opportunities: [string]}> {
+    constructor(props) {
+        super(props);
+        this.state = {
+            bio: '',
+            username: '',
+            email: '',
+            education: '',
+            classOf: new Date().getFullYear(),
+            friendIds: [''],
+            postIds: [''],
+            opportunities: ['']
+        };
+    }
+    
+    componentDidMount() {
+        const headers = new Headers();
+        headers.append('authorization', 'Bearer ' + localStorage.getItem('token'));
+        const request = new Request('http://pathwaysserver.herokuapp.com/getUserInfo', {
+            method: 'GET',
+            headers: headers
+        });
+        fetch(request)
+            .then((response) => response.json())
+            .then((data) => {
+                this.setState({
+                    bio: data.bio,
+                    username: data.username,
+                    email: data.email,
+                    education: data.education,
+                    classOf: data.classOf,
+                    friendIds: data.friendIds,
+                    postIds: data.postIds,
+                    opportunities: data.opportunities
+                });
+            });
+    }
 
-export default class Profile extends React.Component {
     render(){
         return (
             <div className="everything">
@@ -24,7 +60,7 @@ export default class Profile extends React.Component {
                     </Row>
                     <Row>
                         <Col lg="4">
-                            <UserInfoCard/>
+                            <UserInfoCard bio={this.state.bio} education={this.state.education} classOf={this.state.classOf} username={this.state.username} />
                             <SocialInfoCard/>
                         </Col>
                         <Col lg="1">
