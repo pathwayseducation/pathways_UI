@@ -1,4 +1,7 @@
 import React from "react";
+import SearchIcon from "@material-ui/icons/Search";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import SettingsIcon from "@material-ui/icons/Settings";
 import {
     Navbar,
     NavbarToggler,
@@ -14,7 +17,8 @@ import {
     InputGroupAddon,
     InputGroupText,
     FormInput,
-    Collapse
+    Collapse,
+    Badge
 } from "shards-react";
 
 export default class PathwaysNavbar extends React.Component{
@@ -51,57 +55,83 @@ export default class PathwaysNavbar extends React.Component{
     render() {
         return (
             <>
-            <Navbar type="dark" theme="" expand="md" className="comfortaa orangebg">
-                <NavbarBrand href="#" className="comfortaa">Pathways</NavbarBrand>
+            <Navbar type="dark" theme="" expand="md" className="comfortaa orangebg sticky-top" >
+                <NavbarBrand href="#" className="comfortaa brand">Pathways <Badge pill className="badge">BETA</Badge></NavbarBrand>
                 <NavbarToggler onClick={this.toggleNavbar}/>
 
                 <Collapse open={this.state.collapseOpen} navbar>
-                    <Nav navbar>
-                        <NavItem>
-                            <NavLink active href="#">
-                                Active
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
+                    <Nav navbar className="">
+                        <NavItem className="pageLink">
                             <NavLink href="#">
-                                Disabled
+                                Home
                             </NavLink>
                         </NavItem>
+                        <NavItem className="pageLink">
+                            <NavLink href="#">
+                                Opportunities
+                            </NavLink>
+                        </NavItem>
+                        <NavItem className="pageLink">
+                            <NavLink href="#">
+                                Forums
+                            </NavLink>
+                        </NavItem>
+                    </Nav>
+                    <Nav navbar className="ml-auto">
+                        <NavItem className="pageLink">
+                            <NavLink active href="#">
+                                <AccountCircleIcon />  Profile
+                            </NavLink>
+                        </NavItem>
+                    </Nav>
+
+                    <Nav navbar className="searchBar">
+                        <NavItem>
+                            <InputGroup size="sm" seamless>
+                                <InputGroupAddon type="prepend">
+                                    <InputGroupText>
+                                        <SearchIcon color="disabled" />
+                                    </InputGroupText>
+                                </InputGroupAddon>
+                                <FormInput className="border-0" placeholder="Search Pathways..."/>
+                            </InputGroup>
+                        </NavItem>
+                    </Nav>
+                    <Nav navbar className="border-left">
                         <Dropdown
                             open={this.state.dropdownOpen}
                             toggle={this.toggleDropdown}
                         >
                             <DropdownToggle nav caret>
-                                Dropdown
+                                <SettingsIcon/>
                             </DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem>Action</DropdownItem>
-                                <DropdownItem>Another action</DropdownItem>
-                                <DropdownItem>Something else here</DropdownItem>
+                            <DropdownMenu right>
+                                <DropdownItem>Account Settings</DropdownItem>
+                                <DropdownItem>Help Center</DropdownItem>
+                                <DropdownItem>Sign Out</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
-                    </Nav>
-
-                    <Nav navbar className="ml-auto">
-                        <InputGroup size="sm" seamless>
-                            <InputGroupAddon type="prepend">
-                                <InputGroupText>
-
-                                </InputGroupText>
-                            </InputGroupAddon>
-                            <FormInput className="border-0" placeholder="Search Pathways..."/>
-                        </InputGroup>
                     </Nav>
                 </Collapse>
             </Navbar>
                 <style jsx global>{`
                     @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
-                    .custom{
-                        font-family:Comfortaa;
+                    .comfortaa{
+                        font-weight:600;
+                        padding: 5px 10px 5px 10px;
                     }
-                    .custom{
-                        background-color: darkorange;
-                    } 
+                    .brand{
+                        font-size:170%;
+                    }
+                    .badge{
+                        font-size:40%;
+                    }    
+                    .searchBar{
+                        padding: 0px 10px 0px 10px;
+                    }
+                    .pageLink{
+                        font-size:110%;
+                    }
                 `}</style>
             </>
         );
