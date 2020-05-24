@@ -24,7 +24,7 @@ export default class LogInPopup extends React.Component{
             education: '',
             classOf: new Date().getFullYear(),
             bio: '',
-            signedUp: true,
+            signedUp: false,
             error: false
         };
         this.toggle = this.toggle.bind(this);
@@ -59,16 +59,16 @@ export default class LogInPopup extends React.Component{
         };
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        const request = new Request('https://www.pathwaysserver.herokuapp.com/createUser', {
+        const request = new Request('https://pathwaysserver.herokuapp.com/createUser', {
             method: 'POST', 
             headers: headers,
             body: JSON.stringify(body)
         });
-        
+
         fetch(request)
             .then((response) => response.text())
             .then((data) => {
-                if(response === '200') {
+                if(data === 'OK') {
                     this.setState({
                         signedUp: true
                     });
