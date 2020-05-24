@@ -52,15 +52,13 @@ export default class LogInPopup extends React.Component{
             body: JSON.stringify(body)
         });
         fetch(request)
-            .then((response) => response.text())
+            .then((response) => response.json())
             .then((data) => {
                 if(data.hasOwnProperty('accessToken')) {
                     localStorage.setItem('token', data['accessToken']);
                     Router.push('/profile');
                 } else {
-                    this.setState({
-                        error: true
-                    });
+                    this.setState({ error: true });
                 }
             });
     }
