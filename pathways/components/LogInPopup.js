@@ -46,7 +46,7 @@ export default class LogInPopup extends React.Component{
         };
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        const request = new Request('https://www.pathwaysserver.herokuapp.com/login', {
+        const request = new Request('https://pathwaysserver.herokuapp.com/login', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body)
@@ -54,10 +54,8 @@ export default class LogInPopup extends React.Component{
         fetch(request)
             .then((response) => response.text())
             .then((data) => {
-                if(data === 'OK') {
-                    this.setState({
-                        error: false 
-                    });
+                if(data.hasOwnProperty('accessToken')) {
+                    localStorage.setItem('token', data['accessToken']);
                     Router.push('/profile');
                 } else {
                     this.setState({
