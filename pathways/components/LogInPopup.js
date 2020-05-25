@@ -46,7 +46,7 @@ export default class LogInPopup extends React.Component{
         };
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        const request = new Request('http://localhost:1337/login', {
+        const request = new Request('https://pathwaysserver.herokuapp.com/login', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body)
