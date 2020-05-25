@@ -17,11 +17,9 @@ export default class UserInfoCard extends React.Component {
                                 <CardSubtitle  className="comfortaa">{this.props.education}</CardSubtitle>
                             </Col>
                             
-                            {/*
                             <Col md="4">
-                                <img className="rounded-circle" alt="profile picture"></img>
+                                <img style={{width: '100%', height: 'auto'}} src={this.props.profilePic} className="rounded-circle" alt="profile picture"></img>
                             </Col>
-                            */}
                         </Row>
 
                     </CardHeader>

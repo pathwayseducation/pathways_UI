@@ -9,7 +9,7 @@ import SocialInfoCard from '../components/SocialInfoCard';
 import UserExperiencesCard from '../components/UserExperiencesCard';
 import UserActivityCard from '../components/UserActivityCard';
 
-export default class Profile extends React.Component<{}, {bio: string, username: string, email: string, education: string, classOf: number, friendIds: [string], postIds: [string], opportunities: [string]}> {
+export default class Profile extends React.Component<{}, {bio: string, username: string, email: string, education: string, classOf: number, friendIds: [string], postIds: [string], opportunities: [string], profilePic: string}> {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,7 +20,8 @@ export default class Profile extends React.Component<{}, {bio: string, username:
             classOf: new Date().getFullYear(),
             friendIds: [''],
             postIds: [''],
-            opportunities: ['']
+            opportunities: [''],
+            profilePic: ''
         };
     }
     
@@ -42,7 +43,8 @@ export default class Profile extends React.Component<{}, {bio: string, username:
                     classOf: data.classOf,
                     friendIds: data.friendIds,
                     postIds: data.postIds,
-                    opportunities: data.opportunities
+                    opportunities: data.opportunities,
+                    profilePic: data.profilePic
                 });
             });
     }
@@ -60,7 +62,7 @@ export default class Profile extends React.Component<{}, {bio: string, username:
                     </Row>
                     <Row>
                         <Col lg="4">
-                            <UserInfoCard bio={this.state.bio} education={this.state.education} classOf={this.state.classOf} username={this.state.username} />
+                            <UserInfoCard bio={this.state.bio} education={this.state.education} classOf={this.state.classOf} username={this.state.username} profilePic={this.state.profilePic} />
                             <SocialInfoCard/>
                         </Col>
                         <Col lg="1">
