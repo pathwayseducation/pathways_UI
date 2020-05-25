@@ -27,6 +27,7 @@ export default class PathwaysNavbar extends React.Component{
 
         this.toggleDropdown = this.toggleDropdown.bind(this);
         this.toggleNavbar = this.toggleNavbar.bind(this);
+        this.logout = this.logout.bind(this);
 
         this.state = {
             dropdownOpen: false,
@@ -50,6 +51,10 @@ export default class PathwaysNavbar extends React.Component{
                 collapseOpen: !this.state.collapseOpen
             }
         });
+    }
+
+    logout() {
+        localStorage.clear();
     }
 
     render() {
@@ -108,7 +113,7 @@ export default class PathwaysNavbar extends React.Component{
                             <DropdownMenu right>
                                 <DropdownItem>Account Settings</DropdownItem>
                                 <DropdownItem>Help Center</DropdownItem>
-                                <DropdownItem>Sign Out</DropdownItem>
+                                <DropdownItem onClick={this.logout}>Sign Out</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
                     </Nav>
