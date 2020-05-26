@@ -25,6 +25,7 @@ export default class Profile extends React.Component<{}, {bio: string, username:
             error: false
         };
     }
+
     
     componentDidMount() {
         const headers = new Headers();
