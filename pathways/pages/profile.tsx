@@ -26,7 +26,23 @@ export default class Profile extends React.Component<{}, {bio: string, username:
         };
     }
 
+    /*
+    static async getInitialProps({req}) {
+        if(req) return {};
+        const res = await fetch('http://pathwaysserver.herokuapp.com/getUserInfo', {
+            method: 'GET',
+            headers: {
+                'authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        });
+        const data = await res.json();
+        
+        console.log(data);
     
+        return {};
+    }
+    */
+
     componentDidMount() {
         const headers = new Headers();
         if(localStorage.getItem('token') === null) 
@@ -109,3 +125,4 @@ export default class Profile extends React.Component<{}, {bio: string, username:
     }
 
 }
+
