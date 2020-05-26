@@ -8,6 +8,7 @@ import UserInfoCard from '../components/UserInfoCard';
 import SocialInfoCard from '../components/SocialInfoCard';
 import UserExperiencesCard from '../components/UserExperiencesCard';
 import UserActivityCard from '../components/UserActivityCard';
+import useSWR from 'swr';
 
 export default class Profile extends React.Component<{}, {bio: string, username: string, email: string, education: string, classOf: number, friendIds: [string], postIds: [string], opportunities: [string], profilePic: string, error: Boolean}> {
     constructor(props) {

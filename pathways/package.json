@@ -24,6 +24,7 @@
     "react": "^16.13.1",
     "react-dom": "16.13.1",
     "shards-react": "^1.0.3",
+    "swr": "^0.2.2",
     "validator": "^13.0.0"
   },
   "devDependencies": {
