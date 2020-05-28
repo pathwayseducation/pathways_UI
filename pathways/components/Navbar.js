@@ -20,6 +20,7 @@ import {
     Collapse,
     Badge
 } from "shards-react";
+import Link from 'next/link';
 
 export default class PathwaysNavbar extends React.Component{
     constructor(props) {
@@ -67,7 +68,7 @@ export default class PathwaysNavbar extends React.Component{
                 <Collapse open={this.state.collapseOpen} navbar>
                     <Nav navbar className="">
                         <NavItem className="pageLink">
-                            <NavLink href="#">
+                            <NavLink href="/">
                                 Home
                             </NavLink>
                         </NavItem>
@@ -77,14 +78,14 @@ export default class PathwaysNavbar extends React.Component{
                             </NavLink>
                         </NavItem>
                         <NavItem className="pageLink">
-                            <NavLink href="#">
+                            <NavLink href="/forums">
                                 Forums
                             </NavLink>
                         </NavItem>
                     </Nav>
                     <Nav navbar className="ml-auto">
                         <NavItem className="pageLink">
-                            <NavLink active href="#">
+                            <NavLink href="/profile">
                                 <AccountCircleIcon />  Profile
                             </NavLink>
                         </NavItem>

@@ -16,13 +16,13 @@ export default class Login extends React.Component {
 
           <main>
             <h1 className="title">
-              Welcome to Pathways!
+              Welcome to Pathways Beta!
             </h1><br></br>
             <h2>
-                Enter below.
+                Enter your beta login below.
             </h2><br></br>
             <Link href="/"><Button>
-                Home
+                Back to the Pathways Portal
             </Button></Link><br></br>
             <ButtonGroup>
                 <LogInPopup/>

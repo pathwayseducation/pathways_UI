@@ -24,7 +24,7 @@ export default class UserInfoCard extends React.Component {
 
                     </CardHeader>
                     <CardBody>
-                        <CardSubtitle className="comfortaa">{this.props.classOf}</CardSubtitle>
+                        <CardSubtitle className="comfortaa">Class of {this.props.classOf}</CardSubtitle>
                         <p className="px-2">
                             {this.props.bio}
                         </p>
