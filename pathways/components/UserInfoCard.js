@@ -13,7 +13,7 @@ export default class UserInfoCard extends React.Component {
                     <CardHeader className="border-bottom headerbg">
                         <Row>
                             <Col md="8">
-                                <CardTitle className="comfortaa">@{this.props.username}</CardTitle>
+                                <CardTitle className="comfortaa">{this.props.firstName + ' ' + this.props.lastName}</CardTitle>
                                 <CardSubtitle  className="comfortaa">{this.props.education}</CardSubtitle>
                             </Col>
                             

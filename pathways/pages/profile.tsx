@@ -34,7 +34,7 @@ function Profile() {
                 </Row>
                 <Row>
                     <Col lg="4">
-                        <UserInfoCard bio={data.bio} education={data.education} classOf={data.classOf} username={data.username} profilePic={data.profilePic} />
+                        <UserInfoCard bio={data.bio} firstName={data.firstName} lastName={data.lastName} education={data.education} classOf={data.classOf} username={data.username} profilePic={data.profilePic} />
                         <SocialInfoCard/>
                     </Col>
                     <Col lg="1">
