@@ -25,6 +25,8 @@ export default class LogInPopup extends React.Component{
             education: '',
             classOf: new Date().getFullYear(),
             bio: '',
+            firstName: '',
+            lastName: '',
             signedUp: false,
             error: false,
             
@@ -60,6 +62,8 @@ export default class LogInPopup extends React.Component{
         let educationError = '';
         let classOfError = '';
         let bioError = '';
+        let firstNameError = '';
+        let lastNameError = '';
 
         if(!validator.isEmail(this.state.email))
             emailError = 'Invalid email.'
@@ -83,6 +87,14 @@ export default class LogInPopup extends React.Component{
         const bio = this.state.bio;
         if(validator.isEmpty(bio) || !(bio.length > 0 && bio.length <= 500))
             bioError = 'Invalid bio. Must be 1 to 500 characters.';
+
+        const fn = this.state.firstName;
+        if(validator.isEmpty(fn) || !(fn.length > 0 && fn.length <= 50))
+            firstNameError = 'Invalid first name. Must be 1 to 50 characters.';
+
+        const ln = this.state.lastName;
+        if(validator.isEmpty(ln) || !(ln.length > 0 && ln.length <= 50))
+            lastNameError = 'Invalid last name. Must be 1 to 50 characters';
 
         let failed = false;
         if(emailError) {
@@ -109,6 +121,12 @@ export default class LogInPopup extends React.Component{
             this.setState({ bioError: bioError});
             failed = true;
         }
+        if(firstNameError) {
+            this.setState({ firstNameError: firstNameError});
+        }
+        if(lastNameError) {
+            this.setState({ lastNameError: lastNameError});
+        }
         if(failed) return false;
 
         this.setState({
@@ -117,7 +135,9 @@ export default class LogInPopup extends React.Component{
             passwordError: '',
             educationError: '',
             classOfError: '',
-            bioError: ''
+            bioError: '',
+            firstNameError: '',
+            lastNameError: ''
         });
         return true;
     }
@@ -133,7 +153,7 @@ export default class LogInPopup extends React.Component{
                 username: this.state.username,
                 password: this.state.password,
                 education: this.state.education,
-                classOf: new Date().getFullYear(),
+                classOf: this.state.classOf,
                 bio: this.state.bio
             };
             const headers = new Headers();
@@ -170,6 +190,16 @@ export default class LogInPopup extends React.Component{
                     <ModalBody>
                         <Form>
                             <FormGroup>
+                                <label htmlFor="firstName">First Name</label>
+                                <FormInput onChange={this.onChange} value={this.state.firstName} id="firstName" placeholder="First Name" />
+                                <p>{this.state.firstNameError}</p>
+                            </FormGroup>
+                            <FormGroup>
+                                <label htmlFor="lastName">Last Name</label>
+                                <FormInput onChange={this.onChange} value={this.state.lastName} id="lastName" placeholder="Last Name" />
+                                <p>{this.state.lastNameError}</p>
+                            </FormGroup>
+                            <FormGroup>
                                 <label htmlFor="email">Email Address</label>
                                 <FormInput onChange={this.onChange} value={this.state.email} type="email" id="email" placeholder="What is your email address?" />
                                 <p>{this.state.emailError}</p>
@@ -191,7 +221,7 @@ export default class LogInPopup extends React.Component{
                             </FormGroup>
                             <FormGroup>
                                 <label htmlFor="classOf">Class Of</label>
-                                <FormInput onChange={this.onChange} value={this.state.classOf}type="number" id="classof" placeholder="When do you graduate?" />
+                                <FormInput onChange={this.onChange} value={this.state.classOf}type="number" id="classOf" placeholder="When do you graduate?" />
                                 <p>{this.state.classOfError}</p>
                             </FormGroup>
                             <FormGroup>

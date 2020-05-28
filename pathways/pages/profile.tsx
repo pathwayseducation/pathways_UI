@@ -18,36 +18,7 @@ const fetcher = url => fetch(url, {
 }).then(r => r.json());
 
 function Profile() {
-    /*componentDidMount() {
-        const headers = new Headers();
-        if(localStorage.getItem('token') === null) 
-            this.setState({error: true});
-        else {
-            this.setState({error: false});
-            headers.append('authorization', 'Bearer ' + localStorage.getItem('token'));
-            const request = new Request('http://pathwaysserver.herokuapp.com/getUserInfo', {
-                method: 'GET',
-                headers: headers
-            });
-            fetch(request)
-                .then((response) => response.json())
-                .then((data) => {
-                    this.setState({
-                        bio: data.bio,
-                        username: data.username,
-                        email: data.email,
-                        education: data.education,
-                        classOf: data.classOf,
-                        friendIds: data.friendIds,
-                        postIds: data.postIds,
-                        opportunities: data.opportunities,
-                        profilePic: data.profilePic
-                    });
-                });
-        }
-    }*/
-
-    const { data, error } = useSWR('http://pathwaysserver.herokuapp.com/getUserInfo', fetcher);
+    const { data, error } = useSWR('https://pathwaysserver.herokuapp.com/getUserInfo', fetcher);
     
     if(error) return <div>Error loading data.</div>;
     if(!data) return <div>Loading...</div>;
