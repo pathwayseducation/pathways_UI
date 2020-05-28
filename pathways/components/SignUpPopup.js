@@ -154,7 +154,9 @@ export default class LogInPopup extends React.Component{
                 password: this.state.password,
                 education: this.state.education,
                 classOf: this.state.classOf,
-                bio: this.state.bio
+                bio: this.state.bio,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName
             };
             const headers = new Headers();
             headers.append('Content-Type', 'application/json');
