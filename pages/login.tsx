@@ -16,13 +16,11 @@ export default function Login () {
           <h1 className="title">
             Welcome to Pathways Beta v0.2.1!
           </h1>
-
           <br />
 
           <h2>
               Enter your beta login below.
           </h2>
-
           <br />
 
           <Link href="/">
@@ -30,7 +28,6 @@ export default function Login () {
               Back to the Pathways Portal
             </Button>
           </Link>
-
           <br />
 
           <ButtonGroup>
