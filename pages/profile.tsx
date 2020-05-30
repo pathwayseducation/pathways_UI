@@ -2,7 +2,6 @@ import Head from 'next/head'
 import React from 'react';
 import { Container, Row, Col } from 'shards-react';
 import fetch from 'node-fetch';
-import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import UserInfoCard from '../components/UserInfoCard';
 import SocialInfoCard from '../components/SocialInfoCard';
