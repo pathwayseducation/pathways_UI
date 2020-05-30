@@ -52,11 +52,14 @@ export default function Home () {
           <br />
 
           <h3>v0.1.1 - Authentication</h3>
-          <p>Notes: Made profile page dynamic, info from the currently signed in user is displayed on the profile page..</p><br />
+          <p>Notes: Made profile page dynamic, info from the currently signed in user is displayed on the profile page..</p>
+          <br />
           <h3>v0.1.0 - Authentication</h3>
-          <p>Notes: Added authentication in preparation for the STEM expo, and created a forums page.</p><br />
+          <p>Notes: Added authentication in preparation for the STEM expo, and created a forums page.</p>
+          <br />
           <h3>v0.0.1 - Profile</h3>
-          <p>Notes: Created Profile page on the front end</p><br />
+          <p>Notes: Created Profile page on the front end</p>
+          <br />
           <h3>v0.0.0 - Set up</h3>
           <p>Pathways Beta has been set up and published! This web app was made possible using the Next JS framework, Vercel, React JS, Shards React, MongoDB, and Heroku.</p>
         </main>
