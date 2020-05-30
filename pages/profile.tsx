@@ -1,23 +1,16 @@
 import Head from 'next/head'
 import React from 'react';
 import { Container, Row, Col } from 'shards-react';
-import fetch from 'node-fetch';
 import Navbar from '../components/Navbar';
 import UserInfoCard from '../components/UserInfoCard';
 import SocialInfoCard from '../components/SocialInfoCard';
 import UserExperiencesCard from '../components/UserExperiencesCard';
 import UserActivityCard from '../components/UserActivityCard';
 import useSWR from 'swr';
-
-const fetcher = url => fetch(url, {
-    method: 'GET',
-    headers: {
-        'authorization': 'Bearer ' + localStorage.getItem('token')
-    }
-}).then(r => r.json());
+import fetcher from '../utils/fetcher';
 
 function Profile() {
-    const { data, error } = useSWR('https://pathwaysserver.herokuapp.com/getUserInfo', fetcher);
+    const { data, error } = useSWR('https://pathwaysserver.herokuapp.com/getUserInfo', fetcher('GET', r => r.json()));
     
     if(error) return <div>Error loading data.</div>;
     if(!data) return <div>Loading...</div>;

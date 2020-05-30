@@ -9,7 +9,8 @@ import {
     FormGroup,
     ModalFooter
 } from "shards-react";
-import Router from 'next/router'
+import Router from 'next/router';
+import fetcher from '../utils/fetcher';
 
 export default class LogInPopup extends React.Component{
     constructor(props) {
