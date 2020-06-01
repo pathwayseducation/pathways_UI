@@ -7,10 +7,16 @@ import SocialInfoCard from '../components/SocialInfoCard';
 import UserExperiencesCard from '../components/UserExperiencesCard';
 import UserActivityCard from '../components/UserActivityCard';
 import useSWR from 'swr';
-import fetcher from '../utils/fetcher';
+
+const fetcher = url => fetch(url, {
+    method: 'GET',
+    headers: {
+        'authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+}).then(r => r.json());
 
 function Profile() {
-    const { data, error } = useSWR('https://pathwaysserver.herokuapp.com/getUserInfo', fetcher('GET', r => r.json()));
+    const { data, error } = useSWR('https://pathwaysserver.herokuapp.com/getUserInfo', fetcher);
     
     if(error) return <div>Error loading data.</div>;
     if(!data) return <div>Loading...</div>;
