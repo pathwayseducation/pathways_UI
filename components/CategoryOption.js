@@ -1,13 +1,13 @@
 import React from "react";
 import {Card, CardBody, CardSubtitle, CardTitle} from "shards-react";
 
-export default function CategoryOptions () {
+export default function CategoryOptions (props) {
     return (
         <div className="inline">
             <Card className="comfortaa m-1 p-0 cardbg transition" style={{ width:"fit-content" }}>
                 <CardBody className="m-0 p-0 transition">
-                    <CardTitle className="comfortaa title px-2">{this.props.category}</CardTitle>
-                    <CardSubtitle className="comfortaa subtitle">{this.props.postCount}{this.props.postCount == 1 && ` post`}{this.props.postCount != 1 && ` posts`}</CardSubtitle>
+                    <CardTitle className="comfortaa title px-2">{props.category}</CardTitle>
+                    <CardSubtitle className="comfortaa subtitle">{props.postCount}{props.postCount == 1 && ` post`}{props.postCount != 1 && ` posts`}</CardSubtitle>
                 </CardBody>
             </Card>
             <style jsx global>{`
