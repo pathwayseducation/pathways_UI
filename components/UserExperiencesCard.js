@@ -22,37 +22,6 @@ export default class UserExperiencesCard extends React.Component{
     }
 
     addExperience() {
-        const body = {
-            email: this.state.email,
-            username: this.state.username,
-            password: this.state.password,
-            education: this.state.education,
-            classOf: this.state.classOf,
-            bio: this.state.bio,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName
-        };
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        const request = new Request('https://pathwaysserver.herokuapp.com/createUser', {
-            method: 'POST', 
-            headers: headers,
-            body: JSON.stringify(body)
-        });
-
-        fetch(request)
-            .then((response) => response.text())
-            .then((data) => {
-                if(data === 'OK') {
-                    this.setState({
-                        signedUp: true
-                    });
-                } else {
-                    this.setState({
-                        error: true
-                    })
-                }
-            });
     }
 
     render() {
