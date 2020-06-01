@@ -15,6 +15,46 @@ import {
 import EditIcon from '@material-ui/icons/Edit';
 
 export default class UserExperiencesCard extends React.Component{
+    constructor(props) {
+        super(props);
+
+        this.addExperience = this.addExperience.bind(this);
+    }
+
+    addExperience() {
+        const body = {
+            email: this.state.email,
+            username: this.state.username,
+            password: this.state.password,
+            education: this.state.education,
+            classOf: this.state.classOf,
+            bio: this.state.bio,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName
+        };
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        const request = new Request('https://pathwaysserver.herokuapp.com/createUser', {
+            method: 'POST', 
+            headers: headers,
+            body: JSON.stringify(body)
+        });
+
+        fetch(request)
+            .then((response) => response.text())
+            .then((data) => {
+                if(data === 'OK') {
+                    this.setState({
+                        signedUp: true
+                    });
+                } else {
+                    this.setState({
+                        error: true
+                    })
+                }
+            });
+    }
+
     render() {
         return (
             <>
@@ -62,13 +102,13 @@ export default class UserExperiencesCard extends React.Component{
                     </CardBody>
                     <CardFooter className="p-0 m-0 footerbg">
                         <Row className="p-0 m-0">
-                            <Col md="4" className="footerButtons border-right py-2">
+                            <Col md="4" onClick={this.addExperience} className="colbutton footerButtons border-right py-2">
                                 Add experience
                             </Col>
-                            <Col md="4" className="footerButtons border-right py-2">
+                            <Col md="4" className="colbutton footerButtons border-right py-2">
                                 Rearrange experiences
                             </Col>
-                            <Col md="4" className="footerButtons py-2">
+                            <Col md="4" className="colbutton footerButtons py-2">
                                 Remove experience
                             </Col>
                         </Row>
@@ -103,7 +143,10 @@ export default class UserExperiencesCard extends React.Component{
                     }    
                     .footerbg{
                         transition: background-color .6s;
-                    }           
+                    }
+                    .colbutton {
+                        cursor: pointer;
+                    }
                 `}</style>
             </>
         );

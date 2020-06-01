@@ -31,10 +31,10 @@ export default class UserInfoCard extends React.Component {
                     </CardBody>
                     <CardFooter className="p-0 m-0 footerbg">
                         <Row className="p-0 m-0">
-                            <Col md="6" className="footerButtons border-right py-2">
+                            <Col md="6" className="colbutton footerButtons border-right py-2">
                                 Edit Profile
                             </Col>
-                            <Col md="6" className="footerButtons py-2">
+                            <Col md="6" className="colbutton footerButtons py-2">
                                 Account Settings
                             </Col>
                         </Row>
@@ -57,6 +57,9 @@ export default class UserInfoCard extends React.Component {
                     }    
                     .footerbg{
                         transition: background-color .6s;
+                    }
+                    .colbutton {
+                        cursor: pointer;
                     }
                 `}</style>
             </>
