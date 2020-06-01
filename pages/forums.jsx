@@ -4,9 +4,45 @@ import { Container, Row, Col, Card, CardBody, CardTitle, CardHeader, CardSubtitl
 import Navbar from '../components/Navbar';
 import CategoryOption from '../components/CategoryOption';
 import PostPreviewCard from '../components/PostPreviewCard';
+import useSWR from 'swr';
+
+const getMaxSuperCategoryIds = 'http://localhost:1337/getMaxSuperCategoryIds';
+const getCategoryName = 'http://localhost:1337/getCategoryName'
+
+let categoryNames = [];
+
+const fetcher = url => fetch(url, {
+    method: 'GET'
+}).then(r => r.json())
+  .then(rj => {
+      console.log(rj);
+
+      
+      Promise.all(rj.map(id => fetch(getCategoryName, {
+          method: 'POST',
+          body: JSON.stringify({id: id}),
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      }).then(result => result.json())))
+      .then(results => {
+          categoryNames = results;
+          categoryNames.map(category => {
+              console.log(category.name);
+              return category;
+          });
+          return categoryNames;
+      })
+      .catch(error => ['Error getting category names']);
+  });
 
 
 export default function Forums () {
+    const { data, error } = useSWR(getMaxSuperCategoryIds, fetcher);
+
+    if(error) return <div>Error loading data.</div>;
+    if(data === null) return <div>Loading...</div>;
+    
     return (
         <div className="everything">
             <Head>

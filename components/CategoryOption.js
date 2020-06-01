@@ -12,7 +12,7 @@ export default function CategoryOptions (props) {
             </Card>
             <style jsx global>{`
                 @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
-                .comfortaa{
+                .comfortaa {
                     font-weight: 300;
                 }
                 .cardbg:hover .subtitle{
