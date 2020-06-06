@@ -1,48 +1,47 @@
 import Head from 'next/head';
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Card, CardBody, CardTitle, CardHeader, CardSubtitle } from 'shards-react';
 import Navbar from '../components/Navbar';
 import CategoryOption from '../components/CategoryOption';
 import PostPreviewCard from '../components/PostPreviewCard';
-import useSWR from 'swr';
+import fetch from 'node-fetch';
 
-const getMaxSuperCategoryIds = 'http://localhost:1337/getMaxSuperCategoryIds';
-const getCategoryName = 'http://localhost:1337/getCategoryName'
+const getMaxSuperCategoryIds = 'https://pathwaysserver.herokuapp.com/getMaxSuperCategoryIds';
+const getCategoryName = 'https://pathwaysserver.herokuapp.com/getCategoryName'
 
 let categoryNames = [];
 
-const fetcher = url => fetch(url, {
-    method: 'GET'
-}).then(r => r.json())
-  .then(rj => {
-      console.log(rj);
-
-      
-      Promise.all(rj.map(id => fetch(getCategoryName, {
-          method: 'POST',
-          body: JSON.stringify({id: id}),
-          headers: {
-              'Content-Type': 'application/json'
-          }
-      }).then(result => result.json())))
-      .then(results => {
-          categoryNames = results;
-          categoryNames.map(category => {
-              console.log(category.name);
-              return category;
-          });
-          return categoryNames;
-      })
-      .catch(error => ['Error getting category names']);
-  });
-
-
 export default function Forums () {
-    const { data, error } = useSWR(getMaxSuperCategoryIds, fetcher);
-
-    if(error) return <div>Error loading data.</div>;
-    if(data === null) return <div>Loading...</div>;
+    const [force, setForce] = useState(0);
     
+    let data; 
+    if(categoryNames.length === 0)
+        data = fetch(getMaxSuperCategoryIds, {
+            method: 'GET'
+        }).then(r => r.json())
+        .then(rj => {
+            console.log(rj);
+            Promise.all(rj.map(id => fetch(getCategoryName, {
+                method: 'POST',
+                body: JSON.stringify({id: id}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(result => result.json())))
+            .then(results => {
+                categoryNames = results;
+                categoryNames.map(category => {
+                    console.log(category.name);
+                    return category;
+                });
+                setForce(x => ++x);
+                return categoryNames;
+            })
+            .catch(error => ['Error getting category names']);
+        });
+
+    if(categoryNames.length === 0) return <div>Loading...</div>;
+
     return (
         <div className="everything">
             <Head>
@@ -56,24 +55,7 @@ export default function Forums () {
                         <CardSubtitle>Explore forums from hundreds of categories</CardSubtitle>
                     </CardHeader>
                     <CardBody>
-                        <CategoryOption className="inline" category="Chemistry" postCount="1"/>
-                        <CategoryOption className="inline" category="Science Fairs" postCount="4"/>
-                        <CategoryOption className="inline" category="Robotics" postCount="8"/>
-                        <CategoryOption className="inline" category="Medical Research" postCount="12"/>
-                        <CategoryOption className="inline" category="Coding" postCount="7"/>
-                        <CategoryOption className="inline" category="Future Business Leaders of America (FBLA)" postCount="3"/>
-                        <CategoryOption className="inline" category="Biology" postCount="5"/>
-                        <CategoryOption className="inline" category="HOSA (Future Health Professionals)" postCount="4"/>
-                        <CategoryOption className="inline" category="Mathematics" postCount="8"/>
-                        <CategoryOption className="inline" category="Physics" postCount="12"/>
-                        <CategoryOption className="inline" category="Astronomy" postCount="7"/>
-                        <CategoryOption className="inline" category="Model UN" postCount="3"/>
-                        <CategoryOption className="inline" category="Speech and Debate" postCount="5"/>
-                        <CategoryOption className="inline" category="College essays" postCount="4"/>
-                        <CategoryOption className="inline" category="Journalism" postCount="8"/>
-                        <CategoryOption className="inline" category="Neuroscience" postCount="12"/>
-                        <CategoryOption className="inline" category="Web Design" postCount="7"/>
-                        <CategoryOption className="inline" category="Technology Student Association (TSA)" postCount="3"/>
+                        {categoryNames.map((e, i) => <CategoryOption key={i} className="inline" category={e.name}/>)}
                     </CardBody>
                 </Card>
                 <Row className="p-4">

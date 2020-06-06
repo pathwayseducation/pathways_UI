@@ -7,7 +7,9 @@ export default function CategoryOptions (props) {
             <Card className="comfortaa m-1 p-0 cardbg transition" style={{ width:"fit-content" }}>
                 <CardBody className="m-0 p-0 transition">
                     <CardTitle className="comfortaa title px-2">{props.category}</CardTitle>
+                    {/*
                     <CardSubtitle className="comfortaa subtitle">{props.postCount}{props.postCount == 1 && ` post`}{props.postCount != 1 && ` posts`}</CardSubtitle>
+                    */}
                 </CardBody>
             </Card>
             <style jsx global>{`
