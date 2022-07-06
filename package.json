@@ -20,7 +20,7 @@
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.15",
     "next": "9.3.6",
-    "next-auth": "^1.12.1",
+    "next-auth": "^3.29.8",
     "react": "^16.13.1",
     "react-dom": "16.13.1",
     "shards-react": "^1.0.3",
